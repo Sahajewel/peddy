@@ -38,15 +38,91 @@
               },
               fontFamily: {
                 'lato': 'Lato'
-              }
+              },
+              screens: {
+                xs: '340px',  
+                sm: '640px',  
+                md: '768px',
+                lg: '1024px',
+                xl: '1280px',
+                '2xl': '1536px',
+             },
             }
           }
         }
       </script>
+      <!-- fontawesome cdn -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 </head>
 <body class="font-lato">
- 
+  <header>
+    <!-- navbar starts here -->
+
+    <nav class="w-10/12 mx-auto flex justify-between items-center py-5">
+
+        <div>
+         
+          <a class="btn btn-ghost text-xl">
+            <img src="./images/logo.webp" alt="">
+            <p class="font-900 xs:text-16 sm:text-16 md:text-24 lg:text-24">Peddy</p>
+          </a>
+        </div>
+        
+        <div class="xs:hidden sm:hidden md:block lg:block">
+          <ul class="menu menu-horizontal px-1 text-16 text-rgba   ">
+            <li><a>Home</a></li>
+            <li><a>Shop</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+        <div class="dropdown dropdown-bottom dropdown-end xs:block sm:block md:hidden lg:hidden">
+          <div tabindex="0" role="button" class="btn m-1"><i class="fa-solid fa-bars"></i></div>
+          <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+            <li><a>Home</a></li>
+            <li><a>Shop</a></li>
+            <li><a>Contact</a></li>
+          </ul>
+        </div>
+        <div class="ml-2">
+          <a class=""><i class="fa-regular fa-user w-10 h-10 flex border border-gray-500 p-5 rounded-full justify-center items-center"></i></a>
+        </div>
+     
+    </nav>
+    <!-- navbar ends here -->
+
+     <!-- banner starts here -->
+      <section>
+        <div class="w-10/12 mx-auto text-center">
+          <div class="flex items-center justify-center">
+            <h5 class="text-center mr-5 text-18 text-rgba font-900">Bringing Families Together </h5> 
+            <div><img class="w-6 " src="./images/fire.png" alt=""></div>
+          </div>
+          <div>
+            <h1 class="xs:text-3xl sm:text-4xl md:text-6xl lg:text-8xl my-5 font-900 text-black">Your Path to Adoption <br>  Starts Here</h1>
+          </div>
+          <div>
+              <p class="text-rgba text-16 font-400">Pet dogs are some of the most beloved companions in households around the world. Known for their loyalty, playfulness, and unconditional love, dogs can form deep emotional bonds with their owners. They provide comfort, security, and companionship, making them more than just pets—they become part of the family. </p>
+          </div>
+          <div class="my-6">
+            <button class="btn btn-neutral rounded-xl px-7 text-18 bg-green-deep border-none">View More</button>
+          </div>
+          <div>
+            <img class="mx-auto" src="./images/pet.webp" alt="">
+          </div>
+        </div>
+      </section>
+      <!-- banner ends here -->
+  </header>
+  <main>
+    <!-- adopt your best friend section starts here -->
+     <section class="w-10/12 mx-auto">
+      <div>
+        <h1 class="xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl my-5 font-900 text-black text-center">Your Path to Adoption Starts Here</h1>
+        <p class="text-rgba text-16 font-400">"Adopt Your Best Friend" is a phrase that captures the joy and significance of pet adoption, especially when it comes to dogs. Adopting a dog from a shelter or rescue organization means giving a loving home to a pet that truly needs one. It's a life-changing decision not only for the dog but also for the person or family who adopts them.</p>
+      </div>
+     </section>
+  </main>
     <script src="./index.js"></script>
 </body>
 </html>
