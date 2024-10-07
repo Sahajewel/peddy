@@ -1,15 +1,14 @@
 // category pets 
 const loaderHandle=()=>{
     document.getElementById("show-loader").style.display="none";
-    
-    
+   
 }
 
 const loader=()=>{
      document.getElementById("show-loader").style.display="block";
      
     setTimeout(function(){
-        
+       
         loaderHandle()
     },2000)
 }
@@ -127,18 +126,19 @@ const clickModalDisplay = ()=>{
         <h2 id="countdown">3</h2>
         </div>
     `
-document.getElementById("my_modal_1").showModal()
+document.getElementById("my_modal_1").showModal();
+countdown()
 }
-let count = 3;
-const countdownElement = document.getElementById("countdown");
-const countdown = setInterval(()=>{
-    count--;
-    countdownElement = count
-    if(count === 0){
-        clearInterval(countdown);
-        countdownElement.textContent = 'Time\'s up!';
-    }
-},1000);
+// let count = 3;
+// const countdownElement = document.getElementById("countdown");
+// const countdown = setInterval(()=>{
+//     count--;
+//     countdownElement.innerText = count
+//     if(count === 0){
+//         clearInterval(countdown);
+//        
+//     }
+// },1000);
 // display card 
 const displayCards = ()=>{
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
@@ -178,10 +178,10 @@ if(data.length===0){
         <p><i class="fa-solid fa-cake-candles mr-2"></i>Birth: ${!showCard.date_of_birth? "Don't know" : showCard.date_of_birth}</p>
         <p><i class="fa-solid fa-venus mr-2"></i>Gender: ${!showCard.gender? "not found" : showCard.gender}</p>
         <p class="border-b pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showCard.price? "Free" : showCard.price}$</p>
-        <div class="mt-4 flex justify-between">
-            <button onclick="likeBtnShow('${showCard.petId}')"  class="btn w-16"><i class="fa-regular fa-thumbs-up"></i></button>
-            <button onclick="clickBtnModal('${showCard.petId}')"  class="btn text-18 text-green-deep font-900"">Adopt</button>
-            <button onclick="adoptBtn('${showCard.petId}')"  class="btn text-18 text-green-deep font-900">Details</button>
+        <div class="mt-4 grid grid-cols-3 gap-2">
+            <button onclick="likeBtnShow('${showCard.petId}')"  class="btn "><i class="fa-regular fa-thumbs-up"></i></button>
+            <button onclick="clickBtnModal('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900"">Adopt</button>
+            <button onclick="adoptBtn('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900">Details</button>
             
         </div>
 
@@ -195,9 +195,10 @@ document.getElementById("sort").addEventListener("click", ()=>{
     .then((res)=>res.json())
     .then((data)=> {
         const sortPrice = data.pets.sort((a,b)=>parseInt(b.price)- parseInt(a.price) )
-        displayCards(sortPrice)
+        displayCard(sortPrice)
     })
     .catch((error)=>console.log(error))
+    
 })
 
 categoryPets();
