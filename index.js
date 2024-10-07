@@ -74,7 +74,7 @@ const adoptBtn = (id)=>{
     .catch((error)=> console.log(error))
 }
 const adoptShow = (showAdopt)=>{
-    console.log(showAdopt)
+    
     const clickModal = document.getElementById("click-modal");
     clickModal.innerHTML = `
    <img class="h-[300px] w-full object-cover" src="${!showAdopt.image? "not found image" : showAdopt.image}"/>
@@ -109,11 +109,36 @@ const likeShow= (data)=>{
       <img class="w-full" src=${data}/>
    `;
        gridRight.appendChild(showDiv)
-
-
-
 }
-
+const clickBtnModal= (id)=>{
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+    .then((res)=> res.json())
+    .then((data)=>clickModalDisplay(data.petData))
+    .catch((error)=> console.log(error))
+}
+const clickModalDisplay = ()=>{
+    // const modalBtnClick = document.getElementById("click-modal-display");
+    const displayDivModal = document.getElementById("display-div-modal")
+    displayDivModal.innerHTML = `
+        <div class="text-center">
+        <i class="fa-solid fa-handshake text-3xl text-green-deep"></i>
+        <h2 class="text-4xl font-bold mb-2">Congrates</h2>
+        <h1>Adoption process is start for your pet</h1>
+        <h2 id="countdown">3</h2>
+        </div>
+    `
+document.getElementById("my_modal_1").showModal()
+}
+let count = 3;
+const countdownElement = document.getElementById("countdown");
+const countdown = setInterval(()=>{
+    count--;
+    countdownElement = count
+    if(count === 0){
+        clearInterval(countdown);
+        countdownElement.textContent = 'Time\'s up!';
+    }
+},1000);
 // display card 
 const displayCards = ()=>{
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
@@ -155,7 +180,7 @@ if(data.length===0){
         <p class="border-b pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showCard.price? "Free" : showCard.price}$</p>
         <div class="mt-4 flex justify-between">
             <button onclick="likeBtnShow('${showCard.petId}')"  class="btn w-16"><i class="fa-regular fa-thumbs-up"></i></button>
-            <button  class="btn text-18 text-green-deep font-900"">Adopt</button>
+            <button onclick="clickBtnModal('${showCard.petId}')"  class="btn text-18 text-green-deep font-900"">Adopt</button>
             <button onclick="adoptBtn('${showCard.petId}')"  class="btn text-18 text-green-deep font-900">Details</button>
             
         </div>
@@ -165,13 +190,15 @@ if(data.length===0){
     })
 }
 
-fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
+document.getElementById("sort").addEventListener("click", ()=>{
+    fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     .then((res)=>res.json())
     .then((data)=> {
         const sortPrice = data.pets.sort((a,b)=>parseInt(b.price)- parseInt(a.price) )
         displayCards(sortPrice)
     })
     .catch((error)=>console.log(error))
+})
 
 categoryPets();
 displayCards();
