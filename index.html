@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,7 +92,7 @@
     <!-- navbar ends here -->
 
      <!-- banner starts here -->
-      <section>
+      <section class="my-5">
         <div class="w-10/12 mx-auto text-center">
           <div class="flex items-center justify-center">
             <h5 class="text-center mr-5 text-18 text-rgba font-900">Bringing Families Together </h5> 
@@ -105,7 +105,9 @@
               <p class="text-rgba text-16 font-400">Pet dogs are some of the most beloved companions in households around the world. Known for their loyalty, playfulness, and unconditional love, dogs can form deep emotional bonds with their owners. They provide comfort, security, and companionship, making them more than just pets—they become part of the family. </p>
           </div>
           <div class="my-6">
-            <button class="btn btn-neutral rounded-xl px-7 text-18 bg-green-deep border-none">View More</button>
+           <a href="#view">
+            <button  class="btn btn-neutral rounded-xl px-7 text-18 bg-green-deep border-none">View More</button>
+           </a>
           </div>
           <div>
             <img class="mx-auto" src="./images/pet.webp" alt="">
@@ -116,12 +118,52 @@
   </header>
   <main>
     <!-- adopt your best friend section starts here -->
-     <section class="w-10/12 mx-auto">
+     <section id="view" class="w-10/12 mx-auto">
       <div>
         <h1 class="xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl my-5 font-900 text-black text-center">Your Path to Adoption Starts Here</h1>
         <p class="text-rgba text-16 font-400">"Adopt Your Best Friend" is a phrase that captures the joy and significance of pet adoption, especially when it comes to dogs. Adopting a dog from a shelter or rescue organization means giving a loving home to a pet that truly needs one. It's a life-changing decision not only for the dog but also for the person or family who adopts them.</p>
       </div>
+      <div id="display-pets" class="my-6 grid justify-between items-center text-center xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+
+      </div>
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="text-24 font-900">Best Deal For you</h3>
+        </div>
+        <div>
+          <span id="show-loader" class="loading loading-bars loading-lg hidden"></span>
+        </div>
+        <div class="my-6">
+          <a href="#view">
+           <button id="sort"  class="btn btn-neutral rounded-xl px-7 text-18 bg-green-deep border-none">Sort By Price</button>
+          </a>
+         </div>
+      </div>
+      <div class="grid grid-cols-4 gap-6">
+         <div id="grid-left" class="col-span-3 grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+         
+         </div>
+         <div id="grid-right" class="col-span-1 grid grid-cols-2 h-12 gap-5 ">
+         
+         </div>
+      </div>
      </section>
+      
+<button class="btn hidden" onclick="custom_modal.showModal()">Details</button>
+<dialog id="custom_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="click-modal"></div>
+    <div class="modal-action">
+      <form method="dialog" class="w-full bg-green-light">
+       
+        <button class="btn bg-green-light w-full">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+    
+
+
   </main>
     <script src="./index.js"></script>
 </body>
