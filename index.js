@@ -1,12 +1,15 @@
 // category pets 
 const loaderHandle=()=>{
     document.getElementById("show-loader").style.display="none";
+    // document.getElementById("show-loader-front").style.display = "block";
    
 }
 
 const loader=()=>{
      document.getElementById("show-loader").style.display="block";
-     
+    //  document.getElementById("show-loader-front").style.display = "none"
+     document.getElementById("grid-left").innerHTML=""
+     document.getElementById("grid-right").innerHTML=""
     setTimeout(function(){
        
         loaderHandle()
@@ -19,17 +22,19 @@ const activeClose = ()=>{
   }
 }
 const dynamicCategory = (id)=>{
- 
-  fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+ setTimeout(()=>{
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
 
-  .then((res)=>res.json())
-  .then((data)=> {
-   activeClose()
-    const activeBtn= document.getElementById(`btn-${id}`);
-    activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]")
-    displayCard(data.data)
-  })
-  .catch((error)=>console.log(error))
+    .then((res)=>res.json())
+    .then((data)=> {
+     activeClose()
+      const activeBtn= document.getElementById(`btn-${id}`);
+      activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]")
+      displayCard(data.data)
+    })
+    .catch((error)=>console.log(error))
+ },2000)
+
 
 }
 const categoryPets = ()=>{
@@ -112,10 +117,11 @@ const likeShow= (data)=>{
 const clickBtnModal= (id)=>{
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
     .then((res)=> res.json())
-    .then((data)=>clickModalDisplay(data.petData))
+    .then((data)=>clickModalDisplay(data.petData,id))
     .catch((error)=> console.log(error))
+   
 }
-const clickModalDisplay = ()=>{
+const clickModalDisplay = (data,id)=>{
     // const modalBtnClick = document.getElementById("click-modal-display");
     const displayDivModal = document.getElementById("display-div-modal")
     displayDivModal.innerHTML = `
@@ -123,22 +129,35 @@ const clickModalDisplay = ()=>{
         <i class="fa-solid fa-handshake text-3xl text-green-deep"></i>
         <h2 class="text-4xl font-bold mb-2">Congrates</h2>
         <h1>Adoption process is start for your pet</h1>
-        <h2 id="countdown">3</h2>
+        <h2 id="countdown" class="text-3xl font-900">3</h2>
         </div>
     `
+    clickDivModel(id)
 document.getElementById("my_modal_1").showModal();
-countdown()
+
 }
-// let count = 3;
-// const countdownElement = document.getElementById("countdown");
-// const countdown = setInterval(()=>{
-//     count--;
-//     countdownElement.innerText = count
-//     if(count === 0){
-//         clearInterval(countdown);
-//        
-//     }
-// },1000);
+let sum = 3;
+function clickDivModel(id){
+  const clockId =  setInterval(()=>{
+     const count =   document.getElementById("countdown");
+     const disabledBtn = document.getElementById(`disabledBtn-${id}`);
+     
+     sum--;
+     count.innerText= sum;
+        if(sum === 0){
+           
+            clearInterval(clockId)
+            const model =  document.getElementById("my_modal_1");
+             model.close()
+             sum = 3;
+             disabledBtn.disabled = true
+          
+        }
+       
+        
+    },1000)
+}
+
 // display card 
 const displayCards = ()=>{
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
@@ -180,7 +199,7 @@ if(data.length===0){
         <p class="border-b pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showCard.price? "Free" : showCard.price}$</p>
         <div class="mt-4 grid grid-cols-3 gap-2">
             <button onclick="likeBtnShow('${showCard.petId}')"  class="btn "><i class="fa-regular fa-thumbs-up"></i></button>
-            <button onclick="clickBtnModal('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900"">Adopt</button>
+            <button id="disabledBtn-${showCard.petId}"  onclick="clickBtnModal('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900"">Adopt</button>
             <button onclick="adoptBtn('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900">Details</button>
             
         </div>
