@@ -10,4 +10,8 @@ made different Dynamic Buttons by using Javascript. Also made a banner,Navbar se
 4. Added Loading Spinner
 5. sort by price
 
-
+## ES6 features used.
+1. Const and let variable
+2. Arrow Functions
+3. for/of
+   
