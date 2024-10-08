@@ -1,20 +1,16 @@
-// category pets 
 const loaderHandle=()=>{
-    document.getElementById("show-loader").style.display="none";
-    
-   
+    document.getElementById("show-loader").style.display="none";  
 }
 
 const loader=()=>{
      document.getElementById("show-loader").style.display="block";
-    
      document.getElementById("grid-left").innerHTML=""
      document.getElementById("grid-right").innerHTML=""
     setTimeout(function(){
-       
         loaderHandle()
     },2000)
 }
+
 const activeClose = ()=>{
   const buttons=  document.getElementsByClassName("active-close");
   for(let btn of buttons){
@@ -84,15 +80,15 @@ const adoptShow = (showAdopt)=>{
     clickModal.innerHTML = `
    <img class="h-[300px] w-full object-cover" src="${!showAdopt.image? "not found image" : showAdopt.image}"/>
     <h3 class="my-2 font-900 text-18">${!showAdopt.pet_name?  "Not found" : showAdopt.pet_name}</h3>
-    <div class="flex border-b pb-4">u
+    <div class="flex border-b pb-4">
         <div class="mr-10">
-              <p>Breed: ${!showAdopt.breed? "Don't Know" : showAdopt.breed}</p>
+              <p><i class="fa-solid fa-dice-six mr-2"></i>Breed: ${!showAdopt.breed? "Don't Know" : showAdopt.breed}</p>
               <p><i class="fa-solid fa-venus mr-2"></i>Gender: ${!showAdopt.gender? "not found" : showAdopt.gender}</p>
               <p><i class="fa-solid fa-virus mr-2"></i>Vaccinated status: ${!showAdopt.vaccinated_status? "don't know" : showAdopt.vaccinated_status}</p>
         </div>
         <div>
              <p><i class="fa-solid fa-cake-candles mr-2"></i>Birth: ${!showAdopt.date_of_birth? "Don't know" : showAdopt.date_of_birth}</p>
-             <p class=" pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showAdopt.price? "free" : showAdopt.price}
+             <p class=" pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showAdopt.price? "free" : showAdopt.price}$
          </div>
     </div>
     <h2 class="my-2 font-900 text-18">Details Information</h2>
@@ -190,18 +186,18 @@ if(data.length===0){
         card.innerHTML = `
         <img class="w-full h-[200px] object-cover" src=${!showCard.image? "not found image" : showCard.image}/>
         <h3 class="my-2 font-900 text-18">${!showCard.pet_name? "Not found" : showCard.pet_name}</h3>
-        <div class="flex">
-             <img class="w-5 mr-1" src="./images/breeding.png"/> 
-            <p>Breed: ${!showCard.breed? "Don't Know" :showCard.breed}</p>
+      
+             
+            <p class="text-[13px]"><i class="fa-solid fa-dice-six mr-2"></i>Breed: ${!showCard.breed? "Don't Know" :showCard.breed}</p>
            
-        </div>
+       
         <p><i class="fa-solid fa-cake-candles mr-2"></i>Birth: ${!showCard.date_of_birth? "Don't know" : showCard.date_of_birth}</p>
         <p><i class="fa-solid fa-venus mr-2"></i>Gender: ${!showCard.gender? "not found" : showCard.gender}</p>
         <p class="border-b pb-4"><i class="fa-solid fa-dollar-sign mr-2"></i>Price: ${!showCard.price? "Free" : showCard.price}$</p>
         <div class="mt-4 grid grid-cols-3 gap-2">
             <button onclick="likeBtnShow('${showCard.petId}')"  class="btn "><i class="fa-regular fa-thumbs-up"></i></button>
-            <button id="disabledBtn-${showCard.petId}"  onclick="clickBtnModal('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900"">Adopt</button>
-            <button onclick="adoptBtn('${showCard.petId}')"  class="btn xs:text-md sm:text-md md:text-lg lg:text-lg text-green-deep font-900">Details</button>
+            <button id="disabledBtn-${showCard.petId}"  onclick="clickBtnModal('${showCard.petId}')"  class="btn xs:text-sm sm:text-sm md:text-md lg:text-md text-green-deep font-900"">Adopt</button>
+            <button onclick="adoptBtn('${showCard.petId}')"  class="btn xs:text-sm sm:text-sm md:text-md lg:text-md text-green-deep font-900">Details</button>
             
         </div>
 
