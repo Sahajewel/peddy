@@ -14,4 +14,5 @@ made different Dynamic Buttons by using Javascript. Also made a banner,Navbar se
 1. Const and let variable
 2. Arrow Functions
 3. for/of
-   
+## Live link to the deployed project.
+https://batch10-a6.netlify.app/
