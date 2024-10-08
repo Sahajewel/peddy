@@ -1,13 +1,13 @@
 // category pets 
 const loaderHandle=()=>{
     document.getElementById("show-loader").style.display="none";
-    // document.getElementById("show-loader-front").style.display = "block";
+    
    
 }
 
 const loader=()=>{
      document.getElementById("show-loader").style.display="block";
-    //  document.getElementById("show-loader-front").style.display = "none"
+    
      document.getElementById("grid-left").innerHTML=""
      document.getElementById("grid-right").innerHTML=""
     setTimeout(function(){
@@ -22,14 +22,15 @@ const activeClose = ()=>{
   }
 }
 const dynamicCategory = (id)=>{
+    const activeBtn= document.getElementById(`btn-${id}`);
+    activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]")
  setTimeout(()=>{
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
 
     .then((res)=>res.json())
     .then((data)=> {
      activeClose()
-      const activeBtn= document.getElementById(`btn-${id}`);
-      activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]")
+    
       displayCard(data.data)
     })
     .catch((error)=>console.log(error))
@@ -122,7 +123,7 @@ const clickBtnModal= (id)=>{
    
 }
 const clickModalDisplay = (data,id)=>{
-    // const modalBtnClick = document.getElementById("click-modal-display");
+   
     const displayDivModal = document.getElementById("display-div-modal")
     displayDivModal.innerHTML = `
         <div class="text-center">

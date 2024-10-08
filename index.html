@@ -163,15 +163,15 @@
 </dialog>
     
 
-<!-- Open the modal using ID.showModal() method -->
+
 <button id="click-modal-display" class="btn hidden" onclick="my_modal_1.showModal()">open modal</button>
 <dialog id="my_modal_1" class="modal">
   <div class="modal-box">
    <div id="display-div-modal"></div>
     <div class="modal-action">
       <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        
+       
       </form>
     </div>
   </div>
@@ -206,7 +206,7 @@
 
            </div>
         </div>
-        <div class="text-white my-5 mx-auto">
+        <div class="text-white mb-5 mx-auto">
           <div class="mb-4">
             <h2 class="xs:text-xl sm:text-xl md:text-2xl lg:text-3xl">Useful Links</h2>
           </div>
@@ -225,8 +225,12 @@
             <h2 class="text-white xs:text-xl sm:text-xl md:text-2xl lg:text-3xl">Drop a Message</h2>
           </div>
           <div>
-            <input type="text" placeholder="Enter Your Email" class="input input-bordered  max-w-xs mb-2 w-1/2" />
-            <button class="btn btn-wide w-1/2 bg-green-deep text-white outline-none border-none text-xl">Subscribe</button>
+           <div>
+            <input type="text" placeholder="Enter Your Email" class="input input-bordered  max-w-xs mb-2 w-full " />
+           </div>
+           <div>
+            <button class="btn btn-wide bg-green-deep text-white outline-none border-none text-xl">Subscribe</button>
+           </div>
           </div>
         </div>
       </section>
