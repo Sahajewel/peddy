@@ -19,19 +19,24 @@ const activeClose = ()=>{
 }
 const dynamicCategory = (id)=>{
     const activeBtn= document.getElementById(`btn-${id}`);
-    activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]")
+   
+    activeBtn.classList.add("bg-green-light","border-4", "rounded-[50px]");
+    
+   
+   
  setTimeout(()=>{
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
 
     .then((res)=>res.json())
     .then((data)=> {
-     activeClose()
+      
+        activeClose()
     
       displayCard(data.data)
     })
     .catch((error)=>console.log(error))
  },2000)
-
+ 
 
 }
 const categoryPets = ()=>{
@@ -206,16 +211,22 @@ if(data.length===0){
     })
 }
 
-document.getElementById("sort").addEventListener("click", ()=>{
+ document.getElementById("sort").addEventListener("click", ()=>{
     fetch(`https://openapi.programming-hero.com/api/peddy/pets`)
     .then((res)=>res.json())
     .then((data)=> {
+      
         const sortPrice = data.pets.sort((a,b)=>parseInt(b.price)- parseInt(a.price) )
         displayCard(sortPrice)
+        
+       
     })
     .catch((error)=>console.log(error))
     
 })
 
+
+
 categoryPets();
 displayCards();
+
